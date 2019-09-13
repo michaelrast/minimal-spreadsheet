@@ -11,11 +11,17 @@
       <tr *ngFor="let r of rows">
         <td>{{r.name}}</td>
           <td *ngFor="let c of r.columns">
-              <input type="text" *ngIf="!c.cell.dataSelected" [(ngModel)]="c.cell.displayValue"
-              (focus)="c.cell.onFocus()"/>
-              <input type="text" *ngIf="c.cell.dataSelected" [(ngModel)]="c.cell.calcValue"
-              (focusout)="c.cell.onBlur()"/>
-            </td>
+            <input type="text" *ngIf="!c.cell.dataSelected" [(ngModel)]="c.cell.displayValue"
+            (focus)="c.cell.onFocus()"/>
+            <input type="text" *ngIf="c.cell.dataSelected" [(ngModel)]="c.cell.calcValue"
+            (focusout)="c.cell.onBlur()"/>
+          </td>
+          <td>
+            <button (click)="rowUp(r)">Up</button>
+          </td>
+          <td>
+            <button (click)="rowDown(r)">Down</button>
+          </td>
       </tr>
   </table>
   <button (click)="addRow()">Add Row</button>
